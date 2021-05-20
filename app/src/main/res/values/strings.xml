@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">MoneyBook</string>
+    <string name="amount">0 EUR</string>
+    <string name="Overview_Title">Overview</string>
+    <string-array name="current_period">
+        <item>Week</item>
+        <item>Month</item>
+        <item>Year</item>
+    </string-array>
 </resources>
