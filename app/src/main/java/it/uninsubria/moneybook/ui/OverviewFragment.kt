@@ -47,7 +47,7 @@ class OverviewFragment : Fragment(), AdapterView.OnItemSelectedListener {
         //showing selected spinner item
         Toast.makeText(parent.context, "Selected $item", Toast.LENGTH_LONG).show()
 
-        TODO("cambiare l'amount in base al periodo")
+        //TODO("cambiare l'amount in base al periodo")
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
