@@ -6,5 +6,6 @@
         <item>Week</item>
         <item>Month</item>
         <item>Year</item>
+        <item>All Time</item>
     </string-array>
 </resources>

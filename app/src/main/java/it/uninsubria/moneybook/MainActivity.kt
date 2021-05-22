@@ -1,14 +1,18 @@
 package it.uninsubria.moneybook
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import it.uninsubria.moneybook.ui.AddTransactionActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
-private val TAG = "MAIN_ACTIVITY"
+private const val TAG = "MAIN_ACTIVITY"
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
+
+    private val ADD_TRANS_CODE = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -23,15 +27,18 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.buttonAll -> Log.i(TAG, "buttonAll")
-            R.id.buttonAdd -> Log.i(TAG, "buttonAdd")
+            R.id.buttonAdd -> {
+                Log.i(TAG, "buttonAdd")
+                val intent = Intent(this@MainActivity, AddTransactionActivity::class.java)
+                startActivityForResult(intent, ADD_TRANS_CODE)          //deprecated?
+
+            }
             R.id.buttonStats -> Log.i(TAG, "buttonStats")
             R.id.buttonSettings -> Log.i(TAG, "buttonSettings")
             else -> {
                 print("unhandled event source!")
             }
         }
-
     }
-
 
 }
