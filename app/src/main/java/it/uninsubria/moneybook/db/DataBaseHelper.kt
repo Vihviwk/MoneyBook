@@ -58,6 +58,7 @@ class DataBaseHelper(var context : Context) : SQLiteOpenHelper(context, DATABASE
     }
 
     fun readData() : MutableList<Transaction> {
+        //TODO("la funzione legge solo tutti i dati")
         val list : MutableList<Transaction> = ArrayList()
         val db = this.readableDatabase
         val query = "Select * from $TABLE_NAME"
@@ -73,6 +74,7 @@ class DataBaseHelper(var context : Context) : SQLiteOpenHelper(context, DATABASE
                 list.add(transaction)
             } while (result.moveToNext())
         }
+        result.close()
         return list
 
     }

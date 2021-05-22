@@ -1,6 +1,5 @@
 package it.uninsubria.moneybook.ui
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -48,6 +47,10 @@ class OverviewFragment : Fragment(), AdapterView.OnItemSelectedListener {
         Toast.makeText(parent.context, "Selected $item", Toast.LENGTH_LONG).show()
 
         //TODO("cambiare l'amount in base al periodo")
+        val amount = 0
+
+
+        textViewAmount.text = resources.getString(R.string.amountOverview, amount)
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {

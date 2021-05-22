@@ -34,7 +34,7 @@
                     android:id="@+id/insertAmountTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Amount"
+                    android:hint="@string/amountHint"
                     android:inputType="numberSigned|numberDecimal" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -48,26 +48,26 @@
                     android:id="@+id/insertCategTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Category" />
+                    android:hint="@string/categoryHint" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/insertDateView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/ic_calendar_24px"
                 android:drawablePadding="8dp"
                 android:gravity="center_vertical|end"
                 android:includeFontPadding="true"
-                android:text="Date"
+                android:text="@string/dateText"
                 android:textAlignment="gravity"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                app:drawableEndCompat="@drawable/ic_calendar_24px" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/DescriptionLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Description">
+                android:hint="@string/descriptionHint">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/insert_description"
@@ -83,11 +83,24 @@
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="2dp"
                 android:background="#00CFD8DC"
-                android:text="ADD"
+                android:text="@string/addButton"
                 android:textColor="@color/black"/>
 
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/new_transaction_title"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/cardView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

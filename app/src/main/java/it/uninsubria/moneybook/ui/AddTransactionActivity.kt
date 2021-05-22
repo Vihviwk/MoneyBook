@@ -29,9 +29,7 @@ class AddTransactionActivity: AppCompatActivity(), View.OnClickListener {
         //TODO("Not yet implemented")
         //store the transaction in the db or handle invalid input
         val db = DataBaseHelper(this)
-
-        val tempTransaction : Transaction = Transaction(10f,"rest", "yyyy-MM-dd", "desc")
-
+        val tempTransaction = Transaction(10f,"rest", "yyyy-MM-dd", "desc")
         db.insertData(tempTransaction)
 
         closeActivity()
