@@ -1,10 +1,12 @@
 package it.uninsubria.moneybook
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import it.uninsubria.moneybook.ui.AddTransactionActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -30,7 +32,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.buttonAdd -> {
                 Log.i(TAG, "buttonAdd")
                 val intent = Intent(this@MainActivity, AddTransactionActivity::class.java)
-                startActivityForResult(intent, ADD_TRANS_CODE)          //deprecated?
+                startActivityForResult(intent, ADD_TRANS_CODE)
+                //TODO("deprecated? come si fa adesso?")
 
             }
             R.id.buttonStats -> Log.i(TAG, "buttonStats")
@@ -39,6 +42,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 print("unhandled event source!")
             }
         }
+    }
+
+    //TODO("deprecated? come si fa adesso?")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if(resultCode == Activity.RESULT_OK) {
+            Toast.makeText(this, "Success!", Toast.LENGTH_SHORT).show()
+        }
+
     }
 
 }
