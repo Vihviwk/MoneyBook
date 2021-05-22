@@ -5,7 +5,6 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.widget.Toast
-import it.uninsubria.moneybook.Transaction
 
 //database values
 private const val DATABASE_NAME = "MoneyBookDB"

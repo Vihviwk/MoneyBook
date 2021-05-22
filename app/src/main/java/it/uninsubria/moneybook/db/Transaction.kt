@@ -1,4 +1,4 @@
-package it.uninsubria.moneybook
+package it.uninsubria.moneybook.db
 
 
 class Transaction(var amount : Float, var category : String, var date : String, var description : String) {

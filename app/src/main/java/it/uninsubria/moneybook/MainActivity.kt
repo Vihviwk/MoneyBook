@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import it.uninsubria.moneybook.ui.AddTransactionActivity
+import it.uninsubria.moneybook.ui.TransactionListActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 private const val TAG = "MAIN_ACTIVITY"
@@ -28,7 +29,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.buttonAll -> Log.i(TAG, "buttonAll")
+            R.id.buttonAll -> {
+                Log.i(TAG, "buttonAll")
+                val intent = Intent(this@MainActivity, TransactionListActivity::class.java)
+                startActivity(intent)
+            }
             R.id.buttonAdd -> {
                 Log.i(TAG, "buttonAdd")
                 val intent = Intent(this@MainActivity, AddTransactionActivity::class.java)

@@ -7,7 +7,7 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import it.uninsubria.moneybook.R
-import it.uninsubria.moneybook.Transaction
+import it.uninsubria.moneybook.db.Transaction
 import it.uninsubria.moneybook.db.DataBaseHelper
 import kotlinx.android.synthetic.main.add_transaction_activity.*
 
