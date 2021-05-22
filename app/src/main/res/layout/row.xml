@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="8dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="center_vertical"
-        android:layout_weight="0.5">
+        android:layout_weight="0.4">
 
         <TextView
             android:id="@+id/categoryRow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Category"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:textColor="@color/purple_200"/>
 
         <TextView
             android:id="@+id/descriptionRow"
@@ -27,13 +30,24 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/dateRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="0.6"
+        android:text="yyyy-MM-dd"
+        />
+
+    <TextView
         android:id="@+id/amountRow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_weight="1"
+        android:layout_weight="0.5"
         android:text="Amount"
+        android:textColor="@color/teal_200"
         android:textSize="32sp"
-        android:textColor="@color/teal_200"/>
+        android:textAlignment="textEnd"
+        tools:ignore="RtlCompat" />
 
 </LinearLayout>

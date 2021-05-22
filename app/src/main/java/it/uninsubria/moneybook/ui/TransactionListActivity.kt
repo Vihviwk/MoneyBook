@@ -8,9 +8,11 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import it.uninsubria.moneybook.R
 import it.uninsubria.moneybook.db.DataBaseHelper
 import it.uninsubria.moneybook.db.Transaction
+import kotlinx.android.synthetic.main.row.view.*
 import kotlinx.android.synthetic.main.transaction_list_activity.*
 
 class TransactionListActivity : AppCompatActivity() {
@@ -47,15 +49,16 @@ class TransactionListActivity : AppCompatActivity() {
                 newView = LayoutInflater.from(context).inflate(R.layout.row, parent, false)
             }
             if(newView != null) {
-                //TODO
                 val category = newView.findViewById<TextView>(R.id.categoryRow)
                 val description = newView.findViewById<TextView>(R.id.descriptionRow)
-                //val date = newView.findViewById<TextView>(R.id.dateRow)
+                val date = newView.findViewById<TextView>(R.id.dateRow)
                 val amount  = newView.findViewById<TextView>(R.id.amountRow)
                 category.text = data[position].category
                 description.text = data[position].description
-                //date.text = data[position].date
+                date.text = data[position].date
                 amount.text = data[position].amount.toString()
+                //TODO ("setTextColor in base al valore rosso/verde")
+                amount.setTextColor(ContextCompat.getColor(context, R.color.teal_700))
             }
             return newView
         }
