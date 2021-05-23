@@ -27,8 +27,8 @@
                 android:id="@+id/insertAmountLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="2dp">
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_marginBottom="@dimen/small_margin">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/insertAmountTextView"
@@ -81,8 +81,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="2dp"
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_marginBottom="@dimen/small_margin"
                 android:background="#00CFD8DC"
                 android:text="@string/addButton"
                 android:textColor="@color/black"/>

@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.DatePicker
+import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
@@ -15,12 +16,20 @@ import it.uninsubria.moneybook.R
 import it.uninsubria.moneybook.db.Transaction
 import it.uninsubria.moneybook.db.DataBaseHelper
 import kotlinx.android.synthetic.main.add_transaction_activity.*
+import kotlinx.android.synthetic.main.row.*
+import java.lang.Float.parseFloat
 import java.util.*
 
 
 private const val TAG = "Add Transaction"
 
 class AddTransactionActivity: AppCompatActivity(), View.OnClickListener, DatePickerFragment.NoticeDialogListener {
+
+
+    lateinit var category : String
+    lateinit var description : String
+    lateinit var date : String
+    var amount : Float = 0.0f
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,9 +43,19 @@ class AddTransactionActivity: AppCompatActivity(), View.OnClickListener, DatePic
     override fun onClick(v: View?) {
         //TODO("Not yet implemented")
         //store the transaction in the db or handle invalid input
+
         val db = DataBaseHelper(this)
-        val tempTransaction = Transaction(10f,"rest", "yyyy-MM-dd", "desc")
-        db.insertData(tempTransaction)
+
+        //val tempTransaction = Transaction(10f,"rest", "yyyy-MM-dd", "desc")
+
+        category = insertCategTextView.text.toString()
+        description = insert_description.text.toString()
+        amount = parseFloat(insertAmountTextView.text.toString())
+        date = insertDateView.text.toString()
+
+        val transaction = Transaction(amount, category, date, description)
+
+        db.insertData(transaction)
 
         closeActivity()
     }
@@ -56,8 +75,9 @@ class AddTransactionActivity: AppCompatActivity(), View.OnClickListener, DatePic
 
 
     override fun onDateSet(year: Int, month: Int, dayOfMonth: Int) {
-        //TODO("format string")
-        insertDateView.text = "$year-$month-$dayOfMonth"
+        val sMonth = (month + 1).toString()
+        val sDate = "$year-$sMonth-$dayOfMonth"
+        insertDateView.text = sDate
     }
 
 }
