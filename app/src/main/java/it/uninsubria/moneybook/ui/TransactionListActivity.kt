@@ -34,7 +34,7 @@ class TransactionListActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-        TODO("Not yet implemented")
+        //TODO("Not yet implemented")
         //open filters dialog
     }
 

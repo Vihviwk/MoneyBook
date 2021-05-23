@@ -18,8 +18,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Category"
-            android:textSize="16sp"
-            android:textColor="@color/purple_200"/>
+            android:textSize="18sp"
+            android:textColor="@color/purple_200"
+            android:layout_margin="@dimen/small_margin" />
 
         <TextView
             android:id="@+id/descriptionRow"
@@ -27,7 +28,8 @@
             android:layout_height="wrap_content"
             android:text="Description"
             android:textSize="16sp"
-            android:minLines="2"/>
+            android:minLines="2"
+            android:layout_margin="@dimen/small_margin"/>
     </LinearLayout>
 
     <TextView
@@ -37,6 +39,7 @@
         android:layout_gravity="center_vertical"
         android:layout_weight="0.6"
         android:text="yyyy-MM-dd"
+        android:layout_margin="@dimen/small_margin"
         />
 
     <TextView
@@ -49,6 +52,7 @@
         android:textColor="@color/teal_200"
         android:textSize="32sp"
         android:textAlignment="textEnd"
-        tools:ignore="RtlCompat" />
+        tools:ignore="RtlCompat"
+        android:layout_margin="@dimen/small_margin"/>
 
 </LinearLayout>
