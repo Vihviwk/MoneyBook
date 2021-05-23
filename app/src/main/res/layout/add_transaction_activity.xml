@@ -61,7 +61,8 @@
                 android:text="@string/dateText"
                 android:textAlignment="gravity"
                 android:textSize="18sp"
-                app:drawableEndCompat="@drawable/ic_calendar_24px" />
+                app:drawableEndCompat="@drawable/ic_calendar_24px"
+                android:onClick="showDatePickerDialog"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/DescriptionLayout"

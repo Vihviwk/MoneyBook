@@ -15,7 +15,9 @@ import it.uninsubria.moneybook.db.Transaction
 import kotlinx.android.synthetic.main.row.view.*
 import kotlinx.android.synthetic.main.transaction_list_activity.*
 
-class TransactionListActivity : AppCompatActivity() {
+class TransactionListActivity : AppCompatActivity(), View.OnClickListener {
+
+    lateinit var list : MutableList<Transaction>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,13 +25,20 @@ class TransactionListActivity : AppCompatActivity() {
 
         val db : DataBaseHelper = DataBaseHelper(this)
 
-        var list : MutableList<Transaction> = db.readData()
+        list  = db.readData()
+        list.reverse()
 
         listView.adapter = MyAdapter(this, list)
+
+        fab.setOnClickListener(this)
     }
 
+    override fun onClick(v: View?) {
+        TODO("Not yet implemented")
+        //open filters dialog
+    }
 
-    class MyAdapter(private val context: Context, val data : MutableList<Transaction>) : BaseAdapter() {
+    class MyAdapter(private val context: Context, private val data : MutableList<Transaction>) : BaseAdapter() {
 
         override fun getCount(): Int {
             return data.size
@@ -57,11 +66,18 @@ class TransactionListActivity : AppCompatActivity() {
                 description.text = data[position].description
                 date.text = data[position].date
                 amount.text = data[position].amount.toString()
-                //TODO ("setTextColor in base al valore rosso/verde")
-                amount.setTextColor(ContextCompat.getColor(context, R.color.teal_700))
+
+                if (data[position].amount > 0f) {
+                    amount.setTextColor(ContextCompat.getColor(context, R.color.teal_700))
+                } else {
+                    amount.setTextColor(ContextCompat.getColor(context, R.color.purple_200))
+                }
+
             }
             return newView
         }
 
     }
+
+
 }

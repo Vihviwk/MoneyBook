@@ -1,20 +1,26 @@
 package it.uninsubria.moneybook.ui
 
 import android.app.Activity
+import android.app.DatePickerDialog
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.DatePicker
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.DialogFragment
 import it.uninsubria.moneybook.R
 import it.uninsubria.moneybook.db.Transaction
 import it.uninsubria.moneybook.db.DataBaseHelper
 import kotlinx.android.synthetic.main.add_transaction_activity.*
+import java.util.*
 
 
 private const val TAG = "Add Transaction"
 
-class AddTransactionActivity: AppCompatActivity(), View.OnClickListener {
+class AddTransactionActivity: AppCompatActivity(), View.OnClickListener, DatePickerFragment.NoticeDialogListener {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,6 +41,11 @@ class AddTransactionActivity: AppCompatActivity(), View.OnClickListener {
         closeActivity()
     }
 
+    fun showDatePickerDialog(v: View) {
+        val newFragment = DatePickerFragment()
+        newFragment.show(supportFragmentManager, "datePicker")
+    }
+
     private fun closeActivity() {
         //TODO("not yet implemented")
         //handle invalid input
@@ -44,5 +55,9 @@ class AddTransactionActivity: AppCompatActivity(), View.OnClickListener {
     }
 
 
+    override fun onDateSet(year: Int, month: Int, dayOfMonth: Int) {
+        //TODO("format string")
+        insertDateView.text = "$year-$month-$dayOfMonth"
+    }
 
 }
