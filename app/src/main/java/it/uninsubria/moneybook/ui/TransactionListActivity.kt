@@ -43,6 +43,8 @@ class TransactionListActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         //TODO("Not yet implemented")
         //open filters dialog
+//        val db = DataBaseHelper(this)
+//        db.deleteAll()
     }
 
     class MyAdapter(private val context: Context, private val data : MutableList<Transaction>) : BaseAdapter() {

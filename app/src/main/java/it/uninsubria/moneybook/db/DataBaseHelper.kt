@@ -56,11 +56,12 @@ class DataBaseHelper(var context : Context) : SQLiteOpenHelper(context, DATABASE
         }
     }
 
+    //query che ritorna tutte le transazioni in ordine di data
     fun readAllData() : MutableList<Transaction> {
 
         val list : MutableList<Transaction> = ArrayList()
         val db = this.readableDatabase
-        val query = "Select * from $TABLE_NAME"
+        val query = "Select * from $TABLE_NAME order by $COL_DATE desc"
         val result = db.rawQuery(query, null)
         if (result.moveToFirst()) {
             do {
@@ -78,6 +79,7 @@ class DataBaseHelper(var context : Context) : SQLiteOpenHelper(context, DATABASE
 
     }
 
+    //query che ritorna il totale delle transazioni in un dato periodo
     fun totalAmount(period : String) : Float{
 
         var amount = 0.0f
@@ -98,5 +100,14 @@ class DataBaseHelper(var context : Context) : SQLiteOpenHelper(context, DATABASE
         result.close()
         return amount
     }
+
+    //query to delete all data
+    fun deleteAll() {
+        val db = this.writableDatabase
+        db.execSQL("DROP TABLE IF EXISTS $TABLE_NAME")
+        onCreate(db)
+    }
+
+    //TODO(""queries per tutti i vari filtri)"
 
 }
