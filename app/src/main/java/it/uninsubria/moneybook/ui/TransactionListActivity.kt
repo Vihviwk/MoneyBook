@@ -74,12 +74,13 @@ class TransactionListActivity : AppCompatActivity(), View.OnClickListener {
                 category.text = data[position].category
                 description.text = data[position].description
                 date.text = data[position].date
-                amount.text = data[position].amount.toString()
+                amount.text = context.resources.getString(R.string.amountOverview, data[position].amount)
+                //amount.text = data[position].amount.toString()
 
                 if (data[position].amount > 0f) {
-                    amount.setTextColor(ContextCompat.getColor(context, R.color.teal_700))
+                    amount.setTextColor(ContextCompat.getColor(context, R.color.green))
                 } else {
-                    amount.setTextColor(ContextCompat.getColor(context, R.color.purple_200))
+                    amount.setTextColor(ContextCompat.getColor(context, R.color.red))
                 }
 
             }
