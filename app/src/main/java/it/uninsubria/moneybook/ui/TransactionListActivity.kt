@@ -12,7 +12,6 @@ import androidx.core.content.ContextCompat
 import it.uninsubria.moneybook.R
 import it.uninsubria.moneybook.db.DataBaseHelper
 import it.uninsubria.moneybook.db.Transaction
-import kotlinx.android.synthetic.main.row.view.*
 import kotlinx.android.synthetic.main.transaction_list_activity.*
 
 class TransactionListActivity : AppCompatActivity(), View.OnClickListener {
@@ -25,7 +24,7 @@ class TransactionListActivity : AppCompatActivity(), View.OnClickListener {
 
         val db : DataBaseHelper = DataBaseHelper(this)
 
-        list  = db.readData()
+        list  = db.readAllData()
         list.reverse()
 
         listView.adapter = MyAdapter(this, list)

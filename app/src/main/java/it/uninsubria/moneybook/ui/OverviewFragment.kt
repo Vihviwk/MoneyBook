@@ -5,12 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import it.uninsubria.moneybook.R
+import it.uninsubria.moneybook.db.DataBaseHelper
 import kotlinx.android.synthetic.main.fragment_overview.*
 
 
 class OverviewFragment : Fragment(), AdapterView.OnItemSelectedListener {
+
+    lateinit var  db : DataBaseHelper
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +39,7 @@ class OverviewFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
         spinner.onItemSelectedListener = this
 
+        db = DataBaseHelper(requireContext())
         // Inflate the layout for this fragment
         return view
     }
@@ -46,11 +51,16 @@ class OverviewFragment : Fragment(), AdapterView.OnItemSelectedListener {
         //showing selected spinner item
         Toast.makeText(parent.context, "Selected $item", Toast.LENGTH_LONG).show()
 
-        //TODO("cambiare l'amount in base al periodo")
-        val amount = 0
-
+        //get amount from db
+        val amount = db.totalAmount(item)
 
         textViewAmount.text = resources.getString(R.string.amountOverview, amount)
+        //change color
+        if(amount > 0.0f) {
+            textViewAmount.setTextColor(ContextCompat.getColor(requireContext(), R.color.teal_700))
+        } else {
+            textViewAmount.setTextColor(ContextCompat.getColor(requireContext(), R.color.purple_200))
+        }
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {

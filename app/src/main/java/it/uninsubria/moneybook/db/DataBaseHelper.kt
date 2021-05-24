@@ -56,8 +56,8 @@ class DataBaseHelper(var context : Context) : SQLiteOpenHelper(context, DATABASE
         }
     }
 
-    fun readData() : MutableList<Transaction> {
-        //TODO("la funzione legge solo tutti i dati")
+    fun readAllData() : MutableList<Transaction> {
+
         val list : MutableList<Transaction> = ArrayList()
         val db = this.readableDatabase
         val query = "Select * from $TABLE_NAME"
@@ -77,4 +77,25 @@ class DataBaseHelper(var context : Context) : SQLiteOpenHelper(context, DATABASE
         return list
 
     }
+
+    fun totalAmount(period : String) : Float{
+
+        var amount = 0.0f
+        val db = this.readableDatabase
+
+        val query = when(period) {
+            "Week" -> "Select sum($COL_AMOUNT) from $TABLE_NAME where $COL_DATE > date('now', '-7 days');"
+            "Month" -> "Select sum($COL_AMOUNT) from $TABLE_NAME where $COL_DATE > date('now', 'start of month');"
+            "Year" -> "Select sum($COL_AMOUNT) from $TABLE_NAME where $COL_DATE > date('now', 'start of year');"
+            "All Time" -> "Select sum($COL_AMOUNT) from $TABLE_NAME"
+            else -> ""
+        }
+
+        val result = db.rawQuery(query, null)
+        if(result.moveToFirst())
+            amount = result.getFloat(0)
+
+        return amount
+    }
+
 }
