@@ -9,6 +9,7 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.google.android.material.snackbar.Snackbar
 import it.uninsubria.moneybook.R
 import it.uninsubria.moneybook.db.DataBaseHelper
 import it.uninsubria.moneybook.db.Transaction
@@ -26,6 +27,13 @@ class TransactionListActivity : AppCompatActivity(), View.OnClickListener {
 
         list  = db.readAllData()
         list.reverse()
+
+        if(list.isEmpty()) {
+            Snackbar.make( findViewById(R.id.constraintLayout),
+                R.string.no_transactions,
+                Snackbar.LENGTH_SHORT
+            ).show()
+        }
 
         listView.adapter = MyAdapter(this, list)
 

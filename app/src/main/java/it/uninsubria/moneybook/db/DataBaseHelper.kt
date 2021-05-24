@@ -84,9 +84,9 @@ class DataBaseHelper(var context : Context) : SQLiteOpenHelper(context, DATABASE
         val db = this.readableDatabase
 
         val query = when(period) {
-            "Week" -> "Select sum($COL_AMOUNT) from $TABLE_NAME where $COL_DATE > date('now', '-7 days');"
-            "Month" -> "Select sum($COL_AMOUNT) from $TABLE_NAME where $COL_DATE > date('now', 'start of month');"
-            "Year" -> "Select sum($COL_AMOUNT) from $TABLE_NAME where $COL_DATE > date('now', 'start of year');"
+            "Week" -> "Select sum($COL_AMOUNT) from $TABLE_NAME where $COL_DATE >= date('now', '-7 days');"
+            "Month" -> "Select sum($COL_AMOUNT) from $TABLE_NAME where $COL_DATE >= date('now', 'start of month');"
+            "Year" -> "Select sum($COL_AMOUNT) from $TABLE_NAME where $COL_DATE >= date('now', 'start of year');"
             "All Time" -> "Select sum($COL_AMOUNT) from $TABLE_NAME"
             else -> ""
         }
@@ -95,6 +95,7 @@ class DataBaseHelper(var context : Context) : SQLiteOpenHelper(context, DATABASE
         if(result.moveToFirst())
             amount = result.getFloat(0)
 
+        result.close()
         return amount
     }
 

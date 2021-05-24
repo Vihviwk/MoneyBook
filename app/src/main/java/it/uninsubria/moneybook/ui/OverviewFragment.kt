@@ -67,5 +67,4 @@ class OverviewFragment : Fragment(), AdapterView.OnItemSelectedListener {
         TODO("Not yet implemented")
     }
 
-
 }

@@ -46,8 +46,6 @@ class AddTransactionActivity: AppCompatActivity(), View.OnClickListener, DatePic
 
         val db = DataBaseHelper(this)
 
-        //val tempTransaction = Transaction(10f,"rest", "yyyy-MM-dd", "desc")
-
         category = insertCategTextView.text.toString()
         description = insert_description.text.toString()
         amount = parseFloat(insertAmountTextView.text.toString())
@@ -75,9 +73,18 @@ class AddTransactionActivity: AppCompatActivity(), View.OnClickListener, DatePic
 
 
     override fun onDateSet(year: Int, month: Int, dayOfMonth: Int) {
-        val sMonth = (month + 1).toString()
-        val sDate = "$year-$sMonth-$dayOfMonth"
+        val sMonth = handleDate(month +1)
+        val day = handleDate(dayOfMonth)
+        val sDate = "$year-$sMonth-$day"
         insertDateView.text = sDate
+    }
+
+    private fun handleDate(num : Int) : String {
+        var s = num.toString()
+        if(num<10) {
+            s = "0$s"
+        }
+        return s
     }
 
 }
