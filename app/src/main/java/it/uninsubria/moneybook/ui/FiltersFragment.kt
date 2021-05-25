@@ -30,9 +30,7 @@ class FiltersFragment : DialogFragment() {
                 // Add action buttons
                 builder.setPositiveButton(R.string.ok,
                     DialogInterface.OnClickListener { dialog, id ->
-                        //TODO("give results back in a correct way, per ora solo Int array")
                         listener.onFiltersSelection(selectedItems)
-                        //dialog.dismiss()
                     })
                 .setNegativeButton(R.string.cancel,
                     DialogInterface.OnClickListener { dialog, id ->
