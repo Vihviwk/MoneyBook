@@ -2,11 +2,13 @@ package it.uninsubria.moneybook.ui
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
@@ -15,7 +17,7 @@ import it.uninsubria.moneybook.db.DataBaseHelper
 import it.uninsubria.moneybook.db.Transaction
 import kotlinx.android.synthetic.main.transaction_list_activity.*
 
-class TransactionListActivity : AppCompatActivity() {
+class TransactionListActivity : AppCompatActivity(), FiltersFragment.FiltersListener {
 
     private lateinit var list : MutableList<Transaction>
 
@@ -42,6 +44,14 @@ class TransactionListActivity : AppCompatActivity() {
     fun showFiltersFragment(v: View) {
         val newFragment = FiltersFragment()
         newFragment.show(supportFragmentManager, "filters")
+    }
+
+
+    override fun onFiltersSelection(selected: ArrayList<Int>) {
+        //TODO("Not yet implemented, carica nuova lista da db")
+        Toast.makeText(this, "Filters selected", Toast.LENGTH_SHORT).show()
+        for(item in selected)
+            Log.i("onFilterSelection", "$item")
     }
 
     class MyAdapter(private val context: Context, private val data : MutableList<Transaction>) : BaseAdapter() {
@@ -85,6 +95,5 @@ class TransactionListActivity : AppCompatActivity() {
         }
 
     }
-
 
 }

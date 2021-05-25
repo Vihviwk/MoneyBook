@@ -2,36 +2,37 @@ package it.uninsubria.moneybook.ui
 
 import android.app.AlertDialog
 import android.app.Dialog
+import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import it.uninsubria.moneybook.R
 
 
 class FiltersFragment : DialogFragment() {
 
-    private val selectedItems = ArrayList<Int>() //where I track the selected items
+    interface FiltersListener {
+        fun onFiltersSelection(selected : ArrayList<Int>)
+    }
+
+    private val selectedItems = ArrayList<Int>()
+    internal lateinit var listener : FiltersListener
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
             val builder = AlertDialog.Builder(it)
             // Get the layout inflater
-            val inflater = requireActivity().layoutInflater;
-
-
-
-            // Inflate and set the layout for the dialog
-            // Pass null as the parent view because its going in the dialog layout
-            builder.setView(inflater.inflate(R.layout.fragment_filters, null))
+//            val inflater = requireActivity().layoutInflater;
+//
+//            // Inflate and set the layout for the dialog
+//            // Pass null as the parent view because its going in the dialog layout
+//            builder.setView(inflater.inflate(R.layout.fragment_filters, null))
                 // Add action buttons
-                .setPositiveButton(R.string.ok,
+                builder.setPositiveButton(R.string.ok,
                     DialogInterface.OnClickListener { dialog, id ->
-                        //TODO("give results back")
-                        dialog.dismiss()
+                        //TODO("give results back in a correct way, per ora solo Int array")
+                        listener.onFiltersSelection(selectedItems)
+                        //dialog.dismiss()
                     })
                 .setNegativeButton(R.string.cancel,
                     DialogInterface.OnClickListener { dialog, id ->
@@ -52,6 +53,20 @@ class FiltersFragment : DialogFragment() {
 
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
+    }
+
+    // Override the Fragment.onAttach() method to instantiate the FiltersListener
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        // Verify that the host activity implements the callback interface
+        try {
+            // Instantiate the FiltersListener so we can send events to the host
+            listener = context as FiltersListener
+        } catch (e: ClassCastException) {
+            // The activity doesn't implement the interface, throw exception
+            throw ClassCastException((context.toString() +
+                    " must implement FiltersListener"))
+        }
     }
 
 }
