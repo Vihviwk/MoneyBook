@@ -52,7 +52,7 @@ class OverviewFragment : Fragment(), AdapterView.OnItemSelectedListener {
         Toast.makeText(parent.context, "Selected $item", Toast.LENGTH_LONG).show()
 
         //get amount from db
-        val amount = db.totalAmount(item)
+        val amount = db.totalAmount(position)
 
         textViewAmount.text = resources.getString(R.string.amount, amount)
         //change color

@@ -10,11 +10,15 @@
     <string name="new_transaction_title">New Transaction</string>
     <string name="ok" translatable="false">OK</string>
     <string name="cancel">Cancel</string>
+    <string name="week">Week</string>
+    <string name="month">Month</string>
+    <string name="year">Year</string>
+    <string name="all_time">All Time</string>
     <string-array name="current_period">
-        <item>Week</item>
-        <item>Month</item>
-        <item>Year</item>
-        <item>All Time</item>
+        <item>@string/week</item>
+        <item>@string/month</item>
+        <item>@string/year</item>
+        <item>@string/all_time</item>
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>

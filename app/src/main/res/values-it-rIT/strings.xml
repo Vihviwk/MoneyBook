@@ -10,4 +10,8 @@
     <string name="new_transaction_title">Nuova Transazione</string>
     <string name="cancel">Annulla</string>
     <string name="no_transactions">Nessuna Transazione</string>
+    <string name="week">Settimana</string>
+    <string name="month">Mese</string>
+    <string name="year">Anno</string>
+    <string name="all_time">Sempre</string>
 </resources>

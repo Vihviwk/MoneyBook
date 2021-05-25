@@ -5,6 +5,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.widget.Toast
+import it.uninsubria.moneybook.R
 
 //database values
 private const val DATABASE_NAME = "MoneyBookDB"
@@ -79,16 +80,16 @@ class DataBaseHelper(var context : Context) : SQLiteOpenHelper(context, DATABASE
     }
 
     //query che ritorna il totale delle transazioni in un dato periodo
-    fun totalAmount(period : String) : Float{
+    fun totalAmount(period : Int) : Float{
 
         var amount = 0.0f
         val db = this.readableDatabase
 
         val query = when(period) {
-            "Week" -> "Select sum($COL_AMOUNT) from $TABLE_NAME where $COL_DATE >= date('now', '-7 days');"
-            "Month" -> "Select sum($COL_AMOUNT) from $TABLE_NAME where $COL_DATE >= date('now', 'start of month');"
-            "Year" -> "Select sum($COL_AMOUNT) from $TABLE_NAME where $COL_DATE >= date('now', 'start of year');"
-            "All Time" -> "Select sum($COL_AMOUNT) from $TABLE_NAME"
+            0 -> "Select sum($COL_AMOUNT) from $TABLE_NAME where $COL_DATE >= date('now', '-7 days');"
+            1 -> "Select sum($COL_AMOUNT) from $TABLE_NAME where $COL_DATE >= date('now', 'start of month');"
+            2 -> "Select sum($COL_AMOUNT) from $TABLE_NAME where $COL_DATE >= date('now', 'start of year');"
+            3 -> "Select sum($COL_AMOUNT) from $TABLE_NAME"
             else -> ""
         }
 
