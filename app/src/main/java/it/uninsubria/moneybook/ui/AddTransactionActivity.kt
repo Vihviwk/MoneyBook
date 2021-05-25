@@ -7,9 +7,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.DatePicker
-import android.widget.EditText
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import it.uninsubria.moneybook.R
@@ -23,7 +21,9 @@ import java.util.*
 
 private const val TAG = "Add Transaction"
 
-class AddTransactionActivity: AppCompatActivity(), View.OnClickListener, DatePickerFragment.NoticeDialogListener {
+class AddTransactionActivity: AppCompatActivity(),
+    View.OnClickListener,
+    DatePickerFragment.NoticeDialogListener, AdapterView.OnItemSelectedListener {
 
 
     lateinit var category : String
@@ -38,6 +38,22 @@ class AddTransactionActivity: AppCompatActivity(), View.OnClickListener, DatePic
         setContentView(R.layout.add_transaction_activity)
 
         okButton.setOnClickListener(this)
+
+        val cSpinner = findViewById<Spinner>(R.id.categ_spinner)
+
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.categories,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            // Specify the layout to use when the list of choices appears
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            // Apply the adapter to the spinner
+            cSpinner.adapter = adapter
+        }
+
+        cSpinner.onItemSelectedListener = this
     }
 
     override fun onClick(v: View?) {
@@ -46,7 +62,7 @@ class AddTransactionActivity: AppCompatActivity(), View.OnClickListener, DatePic
 
         val db = DataBaseHelper(this)
 
-        category = insertCategTextView.text.toString()
+        //category = insertCategTextView.text.toString()
         description = insert_description.text.toString()
         amount = parseFloat(insertAmountTextView.text.toString())
         date = insertDateView.text.toString()
@@ -85,6 +101,19 @@ class AddTransactionActivity: AppCompatActivity(), View.OnClickListener, DatePic
             s = "0$s"
         }
         return s
+    }
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        //make toast
+        val item : String = parent!!.getItemAtPosition(position).toString()
+        //showing selected spinner item
+        Toast.makeText(parent.context, "Selected $item", Toast.LENGTH_SHORT).show()
+
+        category = item
+    }
+
+    override fun onNothingSelected(parent: AdapterView<*>?) {
+        TODO("Not yet implemented")
     }
 
 }

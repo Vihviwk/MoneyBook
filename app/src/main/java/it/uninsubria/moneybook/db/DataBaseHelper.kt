@@ -11,14 +11,14 @@ private const val DATABASE_NAME = "MoneyBookDB"
 private const val DB_VERSION = 1
 
 //Transactions table
-private val TABLE_NAME = "Transactions"
-private val COL_ID = "id"
-private val COL_AMOUNT = "amount"
-private val COL_DATE = "date"
-private val COL_MSG = "description"
-private val COL_TYPE = "type"
+private const val TABLE_NAME = "Transactions"
+private const val COL_ID = "id"
+private const val COL_AMOUNT = "amount"
+private const val COL_DATE = "date"
+private const val COL_MSG = "description"
+private const val COL_TYPE = "type"
 
-private val CREATE_TRANSACTION_TABLE = "CREATE TABLE " + TABLE_NAME + " (" +
+private const val CREATE_TRANSACTION_TABLE = "CREATE TABLE " + TABLE_NAME + " (" +
         COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
         COL_AMOUNT + " REAL," +
         COL_DATE + " TEXT," +

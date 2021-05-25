@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.transaction_list_activity.*
 
 class TransactionListActivity : AppCompatActivity(), View.OnClickListener {
 
-    lateinit var list : MutableList<Transaction>
+    private lateinit var list : MutableList<Transaction>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,7 +74,7 @@ class TransactionListActivity : AppCompatActivity(), View.OnClickListener {
                 category.text = data[position].category
                 description.text = data[position].description
                 date.text = data[position].date
-                amount.text = context.resources.getString(R.string.amountOverview, data[position].amount)
+                amount.text = context.resources.getString(R.string.amount, data[position].amount)
                 //amount.text = data[position].amount.toString()
 
                 if (data[position].amount > 0f) {

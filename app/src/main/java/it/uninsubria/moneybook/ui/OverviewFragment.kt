@@ -54,7 +54,7 @@ class OverviewFragment : Fragment(), AdapterView.OnItemSelectedListener {
         //get amount from db
         val amount = db.totalAmount(item)
 
-        textViewAmount.text = resources.getString(R.string.amountOverview, amount)
+        textViewAmount.text = resources.getString(R.string.amount, amount)
         //change color
         if(amount > 0.0f) {
             textViewAmount.setTextColor(ContextCompat.getColor(requireContext(), R.color.green))
