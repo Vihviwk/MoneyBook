@@ -56,7 +56,7 @@ class OverviewFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
         textViewAmount.text = resources.getString(R.string.amount, amount)
         //change color
-        if(amount > 0.0f) {
+        if(amount >= 0.0f) {
             textViewAmount.setTextColor(ContextCompat.getColor(requireContext(), R.color.green))
         } else {
             textViewAmount.setTextColor(ContextCompat.getColor(requireContext(), R.color.red))

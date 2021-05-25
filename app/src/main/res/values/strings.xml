@@ -8,6 +8,8 @@
     <string name="descriptionHint">Description</string>
     <string name="addButton">ADD</string>
     <string name="new_transaction_title">New Transaction</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
     <string-array name="current_period">
         <item>Week</item>
         <item>Month</item>

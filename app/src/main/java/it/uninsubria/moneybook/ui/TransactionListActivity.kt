@@ -15,7 +15,7 @@ import it.uninsubria.moneybook.db.DataBaseHelper
 import it.uninsubria.moneybook.db.Transaction
 import kotlinx.android.synthetic.main.transaction_list_activity.*
 
-class TransactionListActivity : AppCompatActivity(), View.OnClickListener {
+class TransactionListActivity : AppCompatActivity() {
 
     private lateinit var list : MutableList<Transaction>
 
@@ -37,14 +37,11 @@ class TransactionListActivity : AppCompatActivity(), View.OnClickListener {
 
         listView.adapter = MyAdapter(this, list)
 
-        fab.setOnClickListener(this)
     }
 
-    override fun onClick(v: View?) {
-        //TODO("Not yet implemented")
-        //open filters dialog
-//        val db = DataBaseHelper(this)
-//        db.deleteAll()
+    fun showFiltersFragment(v: View) {
+        val newFragment = FiltersFragment()
+        newFragment.show(supportFragmentManager, "filters")
     }
 
     class MyAdapter(private val context: Context, private val data : MutableList<Transaction>) : BaseAdapter() {
@@ -77,7 +74,7 @@ class TransactionListActivity : AppCompatActivity(), View.OnClickListener {
                 amount.text = context.resources.getString(R.string.amount, data[position].amount)
                 //amount.text = data[position].amount.toString()
 
-                if (data[position].amount > 0f) {
+                if (data[position].amount >= 0f) {
                     amount.setTextColor(ContextCompat.getColor(context, R.color.green))
                 } else {
                     amount.setTextColor(ContextCompat.getColor(context, R.color.red))

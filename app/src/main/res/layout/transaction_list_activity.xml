@@ -25,6 +25,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:srcCompat="@drawable/ic_baseline_filter_list_24"
-        android:focusable="true" />
+        android:focusable="true"
+        android:onClick="showFiltersFragment"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
