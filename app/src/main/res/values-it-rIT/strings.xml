@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MoneyBook</string>
+    <string name="Overview_Title">Panoramica</string>
+    <string name="amountHint">Somma</string>
+    <string name="categoryHint">Categoria</string>
+    <string name="dateText">Data</string>
+    <string name="descriptionHint">Descrizione</string>
+    <string name="addButton">AGGIUNGI</string>
+    <string name="new_transaction_title">Nuova Transazione</string>
+    <string name="cancel">Annulla</string>
+    <string name="no_transactions">Nessuna Transazione</string>
+</resources>
