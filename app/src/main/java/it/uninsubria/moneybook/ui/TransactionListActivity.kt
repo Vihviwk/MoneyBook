@@ -20,15 +20,16 @@ import kotlinx.android.synthetic.main.transaction_list_activity.*
 class TransactionListActivity : AppCompatActivity(), FiltersFragment.FiltersListener {
 
     private lateinit var list : MutableList<Transaction>
+    private lateinit var  db : DataBaseHelper
+    private lateinit var adapter : MyAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.transaction_list_activity)
 
-        val db : DataBaseHelper = DataBaseHelper(this)
+        db = DataBaseHelper(this)
 
         list  = db.readAllData()
-        list.reverse()
 
         if(list.isEmpty()) {
             Snackbar.make( findViewById(R.id.constraintLayout),
@@ -37,7 +38,8 @@ class TransactionListActivity : AppCompatActivity(), FiltersFragment.FiltersList
             ).show()
         }
 
-        listView.adapter = MyAdapter(this, list)
+        adapter = MyAdapter(this, list)
+        listView.adapter = adapter
 
     }
 
@@ -48,10 +50,15 @@ class TransactionListActivity : AppCompatActivity(), FiltersFragment.FiltersList
 
 
     override fun onFiltersSelection(selected: ArrayList<Int>) {
-        //TODO("Not yet implemented, carica nuova lista da db")
+
         Toast.makeText(this, "Filters selected", Toast.LENGTH_SHORT).show()
         for(item in selected)
             Log.i("onFilterSelection", "$item")
+
+        //load new data from db
+        list.clear()
+        list.addAll(db.readCategories(selected))
+        adapter.notifyDataSetChanged()
     }
 
     class MyAdapter(private val context: Context, private val data : MutableList<Transaction>) : BaseAdapter() {
@@ -92,6 +99,11 @@ class TransactionListActivity : AppCompatActivity(), FiltersFragment.FiltersList
 
             }
             return newView
+        }
+
+        override fun notifyDataSetChanged() {
+            super.notifyDataSetChanged()
+            Log.i("adapter", "notifyDataSetChanged")
         }
 
     }

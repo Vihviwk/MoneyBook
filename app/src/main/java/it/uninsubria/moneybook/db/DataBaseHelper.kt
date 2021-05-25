@@ -76,7 +76,6 @@ class DataBaseHelper(var context : Context) : SQLiteOpenHelper(context, DATABASE
         }
         result.close()
         return list
-
     }
 
     //query che ritorna il totale delle transazioni in un dato periodo
@@ -109,5 +108,42 @@ class DataBaseHelper(var context : Context) : SQLiteOpenHelper(context, DATABASE
     }
 
     //TODO(""queries per tutti i vari filtri)"
+
+    //query per leggere solo le transazioni di certe categorie
+    fun readCategories(categories : ArrayList<Int>): MutableList<Transaction> {
+        val list : MutableList<Transaction> = ArrayList()
+        val db = this.readableDatabase
+
+        var s = ""
+        for (item in categories) {
+            if(s != "")
+                s += ", "
+            when (item) {
+                0 -> s += "'Taxes'"
+                1 -> s += "'Salary'"
+                2 -> s += "'Restaurant'"
+                3 -> s += "'Groceries'"
+                4 -> s += "'Leisure'"
+                5 -> s += "'Other'"
+            }
+        }
+
+        val query = "Select * from $TABLE_NAME where $COL_TYPE in ($s) order by $COL_DATE desc"
+
+        val result = db.rawQuery(query, null)
+        if (result.moveToFirst()) {
+            do {
+                val transaction = Transaction()
+                transaction.id = result.getInt(result.getColumnIndex(COL_ID))
+                transaction.amount = result.getFloat(result.getColumnIndex(COL_AMOUNT))
+                transaction.category = result.getString(result.getColumnIndex(COL_TYPE))
+                transaction.date = result.getString(result.getColumnIndex(COL_DATE))
+                transaction.description = result.getString(result.getColumnIndex(COL_MSG))
+                list.add(transaction)
+            } while (result.moveToNext())
+        }
+        result.close()
+        return list
+    }
 
 }
