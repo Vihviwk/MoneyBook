@@ -49,7 +49,7 @@ class OverviewFragment : Fragment(), AdapterView.OnItemSelectedListener {
         //make toast
         val item : String = parent!!.getItemAtPosition(position).toString()
         //showing selected spinner item
-        Toast.makeText(parent.context, "Selected $item", Toast.LENGTH_LONG).show()
+        Toast.makeText(parent.context, resources.getString(R.string.selected, item), Toast.LENGTH_SHORT).show()
 
         //get amount from db
         val amount = db.totalAmount(position)

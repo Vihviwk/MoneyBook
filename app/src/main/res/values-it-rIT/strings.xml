@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">MoneyBook</string>
     <string name="Overview_Title">Panoramica</string>
     <string name="amountHint">Somma</string>
     <string name="categoryHint">Categoria</string>
@@ -20,4 +19,7 @@
     <string name="groceries">Spesa</string>
     <string name="leisure">Svago</string>
     <string name="other">Altro</string>
+    <string name="toast_filters">Filtri selezionati</string>
+    <string name="filters_title">Filtri</string>
+    <string name="selected">Selezionato %1$s</string>
 </resources>

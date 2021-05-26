@@ -51,7 +51,7 @@ class TransactionListActivity : AppCompatActivity(), FiltersFragment.FiltersList
 
     override fun onFiltersSelection(selected: ArrayList<Int>) {
 
-        Toast.makeText(this, "Filters selected", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, getString(R.string.toast_filters), Toast.LENGTH_SHORT).show()
         for(item in selected)
             Log.i("onFilterSelection", "$item")
 
@@ -62,6 +62,7 @@ class TransactionListActivity : AppCompatActivity(), FiltersFragment.FiltersList
     }
 
     override fun onResetFilters() {
+        //load all data from db
         list.clear()
         list.addAll(db.readAllData())
         adapter.notifyDataSetChanged()

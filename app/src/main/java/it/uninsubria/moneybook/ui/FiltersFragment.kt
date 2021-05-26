@@ -22,12 +22,6 @@ class FiltersFragment : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
             val builder = AlertDialog.Builder(it)
-            // Get the layout inflater
-//            val inflater = requireActivity().layoutInflater;
-//
-//            // Inflate and set the layout for the dialog
-//            // Pass null as the parent view because its going in the dialog layout
-//            builder.setView(inflater.inflate(R.layout.fragment_filters, null))
                 // Add action buttons
                 builder.setPositiveButton(R.string.ok,
                     DialogInterface.OnClickListener { dialog, id ->
@@ -43,7 +37,7 @@ class FiltersFragment : DialogFragment() {
                     })
                 // Specify the list array, the items to be selected by default (null for none),
                 // and the listener through which to receive callbacks when items are selected
-                .setTitle("Filters")
+                .setTitle(getString(R.string.filters_title))
                 .setMultiChoiceItems(R.array.categories, null,
                                         DialogInterface.OnMultiChoiceClickListener {
                                             dialog, which, isChecked ->

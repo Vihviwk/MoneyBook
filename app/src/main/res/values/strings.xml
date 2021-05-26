@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MoneyBook</string>
+    <string name="app_name" translatable="false">MoneyBook</string>
     <string name="amount" translatable="false">"%1$.02f EUR"</string>
     <string name="Overview_Title">Overview</string>
     <string name="amountHint">Amount</string>
@@ -21,8 +21,6 @@
         <item>@string/year</item>
         <item>@string/all_time</item>
     </string-array>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="no_transactions">No Transactions</string>
     <string name="taxes">Taxes</string>
     <string name="salary">Salary</string>
@@ -30,6 +28,9 @@
     <string name="groceries">Groceries</string>
     <string name="leisure">Leisure</string>
     <string name="other">Other</string>
+    <string name="toast_filters">Filters selected</string>
+    <string name="filters_title">Filters</string>
+    <string name="selected">Selected %1$s</string>
     <string-array name="categories">
         <item>@string/taxes</item>
         <item>@string/salary</item>
