@@ -61,6 +61,12 @@ class TransactionListActivity : AppCompatActivity(), FiltersFragment.FiltersList
         adapter.notifyDataSetChanged()
     }
 
+    override fun onResetFilters() {
+        list.clear()
+        list.addAll(db.readAllData())
+        adapter.notifyDataSetChanged()
+    }
+
     class MyAdapter(private val context: Context, private val data : MutableList<Transaction>) : BaseAdapter() {
 
         override fun getCount(): Int {

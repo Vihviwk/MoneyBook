@@ -13,6 +13,7 @@ class FiltersFragment : DialogFragment() {
 
     interface FiltersListener {
         fun onFiltersSelection(selected : ArrayList<Int>)
+        fun onResetFilters()
     }
 
     private val selectedItems = ArrayList<Int>()
@@ -35,6 +36,10 @@ class FiltersFragment : DialogFragment() {
                 .setNegativeButton(R.string.cancel,
                     DialogInterface.OnClickListener { dialog, id ->
                         dialog.cancel()
+                    })
+                .setNeutralButton(R.string.resetFilters,
+                    DialogInterface.OnClickListener { dialog , id ->
+                        listener.onResetFilters()
                     })
                 // Specify the list array, the items to be selected by default (null for none),
                 // and the listener through which to receive callbacks when items are selected
