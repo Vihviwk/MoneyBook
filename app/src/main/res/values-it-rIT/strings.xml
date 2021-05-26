@@ -24,4 +24,6 @@
     <string name="selected">Selezionato %1$s</string>
     <string name="settings_title">Impostazioni</string>
     <string name="delete_all">Cancella tutti i dati</string>
+    <string name="confirm_delete">Vuoi cancellare tutti i dati?</string>
+    <string name="data_deleted">Dati cancellati</string>
 </resources>

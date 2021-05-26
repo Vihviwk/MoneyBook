@@ -34,6 +34,8 @@
     <string name="settings_title">Settings</string>
     <string name="author_signature" translatable="false">App created by Lorenzo Ottaviani \n lottaviani@studenti.uninsubria.it</string>
     <string name="delete_all">Delete all data</string>
+    <string name="confirm_delete">Do you want to delete all data?</string>
+    <string name="data_deleted">Data deleted</string>
     <string-array name="categories">
         <item>@string/taxes</item>
         <item>@string/salary</item>
