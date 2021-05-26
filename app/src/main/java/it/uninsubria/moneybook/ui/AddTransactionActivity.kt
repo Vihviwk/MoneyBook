@@ -124,8 +124,17 @@ class AddTransactionActivity: AppCompatActivity(),
         val item : String = parent!!.getItemAtPosition(position).toString()
         //showing selected spinner item
         Toast.makeText(parent.context, "Selected $item", Toast.LENGTH_SHORT).show()
+        var s = ""
+        when (position) {
+            0 -> s = "Taxes"
+            1 -> s = "Salary"
+            2 -> s = "Restaurant"
+            3 -> s = "Groceries"
+            4 -> s = "Leisure"
+            5 -> s = "Other"
+        }
 
-        category = item
+        category = s
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {

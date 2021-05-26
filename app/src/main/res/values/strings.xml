@@ -23,12 +23,18 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="no_transactions">No Transactions</string>
+    <string name="taxes">Taxes</string>
+    <string name="salary">Salary</string>
+    <string name="restaurant">Restaurant</string>
+    <string name="groceries">Groceries</string>
+    <string name="leisure">Leisure</string>
+    <string name="other">Other</string>
     <string-array name="categories">
-        <item>Taxes</item>
-        <item>Salary</item>
-        <item>Restaurant</item>
-        <item>Groceries</item>
-        <item>Leisure</item>
-        <item>Other</item>
+        <item>@string/taxes</item>
+        <item>@string/salary</item>
+        <item>@string/restaurant</item>
+        <item>@string/groceries</item>
+        <item>@string/leisure</item>
+        <item>@string/other</item>
     </string-array>
 </resources>

@@ -14,4 +14,10 @@
     <string name="month">Mese</string>
     <string name="year">Anno</string>
     <string name="all_time">Sempre</string>
+    <string name="taxes">Tasse</string>
+    <string name="salary">Stipendio</string>
+    <string name="restaurant">Ristorante</string>
+    <string name="groceries">Spesa</string>
+    <string name="leisure">Svago</string>
+    <string name="other">Altro</string>
 </resources>
