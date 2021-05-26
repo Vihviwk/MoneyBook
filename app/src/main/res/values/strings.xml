@@ -31,6 +31,9 @@
     <string name="toast_filters">Filters selected</string>
     <string name="filters_title">Filters</string>
     <string name="selected">Selected %1$s</string>
+    <string name="settings_title">Settings</string>
+    <string name="author_signature" translatable="false">App created by Lorenzo Ottaviani \n lottaviani@studenti.uninsubria.it</string>
+    <string name="delete_all">Delete all data</string>
     <string-array name="categories">
         <item>@string/taxes</item>
         <item>@string/salary</item>

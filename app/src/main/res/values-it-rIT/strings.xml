@@ -22,4 +22,6 @@
     <string name="toast_filters">Filtri selezionati</string>
     <string name="filters_title">Filtri</string>
     <string name="selected">Selezionato %1$s</string>
+    <string name="settings_title">Impostazioni</string>
+    <string name="delete_all">Cancella tutti i dati</string>
 </resources>

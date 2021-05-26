@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MoneyBook">
+        <activity android:name=".ui.SettingsActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,7 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.AddTransactionActivity" />
-        <activity android:name=".ui.TransactionListActivity"/>
+        <activity android:name=".ui.TransactionListActivity" />
     </application>
 
 </manifest>
