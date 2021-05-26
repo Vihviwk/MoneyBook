@@ -61,7 +61,7 @@
                 android:drawablePadding="8dp"
                 android:gravity="center_vertical|end"
                 android:includeFontPadding="true"
-                android:text="@string/dateText"
+                android:hint="@string/dateText"
                 android:textAlignment="gravity"
                 android:textSize="18sp"
                 app:drawableEndCompat="@drawable/ic_calendar_24px"

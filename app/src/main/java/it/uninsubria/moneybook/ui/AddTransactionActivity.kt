@@ -57,21 +57,37 @@ class AddTransactionActivity: AppCompatActivity(),
     }
 
     override fun onClick(v: View?) {
-        //TODO("Not yet implemented")
-        //store the transaction in the db or handle invalid input
+        //store the transaction in the db and handle invalid input
 
         val db = DataBaseHelper(this)
+        var valid = true
 
-        //category = insertCategTextView.text.toString()
+        if(insertAmountTextView.text.toString() != "") {
+            amount = parseFloat(insertAmountTextView.text.toString())
+        } else {
+            insertAmountTextView.error = "Insert a value"
+            valid = false
+        }
+
+        if(insertDateView.text.toString() != "") {
+            date = insertDateView.text.toString()
+        } else {
+            insertDateView.error = "Choose a date"
+            valid = false
+        }
+
+        //description can be empty
         description = insert_description.text.toString()
-        amount = parseFloat(insertAmountTextView.text.toString())
-        date = insertDateView.text.toString()
 
-        val transaction = Transaction(amount, category, date, description)
+        if(valid) {
+            val transaction = Transaction(amount, category, date, description)
 
-        db.insertData(transaction)
+            db.insertData(transaction)
 
-        closeActivity()
+            closeActivity()
+        }
+
+
     }
 
     fun showDatePickerDialog(v: View) {
@@ -82,8 +98,8 @@ class AddTransactionActivity: AppCompatActivity(),
     private fun closeActivity() {
         //TODO("not yet implemented")
         //handle invalid input
-        val resultIntent = Intent()
-        setResult(Activity.RESULT_OK, resultIntent)
+//        val resultIntent = Intent()
+//        setResult(Activity.RESULT_OK, resultIntent)
         finish()
     }
 
