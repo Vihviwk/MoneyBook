@@ -3,28 +3,48 @@ package it.uninsubria.moneybook.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.github.mikephil.charting.charts.LineChart
 import it.uninsubria.moneybook.R
+import it.uninsubria.moneybook.db.DataBaseHelper
+import it.uninsubria.moneybook.db.Transaction
+import kotlinx.android.synthetic.main.activity_stats.*
 
-class StatsActivity : AppCompatActivity(),
+class StatsActivity : AppCompatActivity(), View.OnClickListener,
     DatePickerFragment.NoticeDialogListener,FiltersFragment.FiltersListener {
 
-    private var startDate = "2015-01-01"
-    private var endDate = "2025-01-01"
+    private var startDate = "1970-01-01"
+    private var endDate = "2100-01-01"
+
+    private var filtersSelected : ArrayList<Int> = ArrayList()
+
+    private val db = DataBaseHelper(this)
+
+    private lateinit var transactions : MutableList<Transaction>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_stats)
 
+        fromTextView.text = startDate
+        toTextView.text = endDate
 
+        //initial data, all
+        transactions = db.readAllData()
+
+        //set listener
+        applyButton.setOnClickListener(this)
+
+        incomeTextView.text = computeIncome(transactions).toString()
+        expensesTextView.text = computeExpenses(transactions).toString()
 
     }
 
     fun onClickDate(v: View) {
         val newFragment = DatePickerFragment()
         if(v.id == R.id.toTextView) {
-            newFragment.flag = 0
-        } else if(v.id == R.id.fromTextView) {
             newFragment.flag = 1
+        } else if(v.id == R.id.fromTextView) {
+            newFragment.flag = 0
         }
         newFragment.show(supportFragmentManager, "datePicker")
     }
@@ -38,6 +58,8 @@ class StatsActivity : AppCompatActivity(),
         } else if(flag == 1) {
             endDate = sDate
         }
+        fromTextView.text = startDate
+        toTextView.text = endDate
     }
 
     private fun handleDate(num : Int) : String {
@@ -54,10 +76,36 @@ class StatsActivity : AppCompatActivity(),
     }
 
     override fun onFiltersSelection(selected: ArrayList<Int>) {
-        TODO("Not yet implemented")
+        filtersSelected = selected
     }
 
     override fun onResetFilters() {
         TODO("Not yet implemented")
+    }
+
+    //apply button
+    override fun onClick(v: View?) {
+        transactions.clear()
+        transactions.addAll(db.read(startDate, endDate, filtersSelected))
+        //TODO("update graph and data")
+        incomeTextView.text = computeIncome(transactions).toString()
+        expensesTextView.text = computeExpenses(transactions).toString()
+    }
+
+    private fun computeIncome(transactions : MutableList<Transaction>) : Float {
+        var sum = 0f
+        for(t in transactions) {
+            if(t.amount >= 0)
+                sum += t.amount
+        }
+        return sum
+    }
+    private fun computeExpenses(transactions: MutableList<Transaction>) : Float {
+        var sum = 0f
+        for(t in transactions) {
+            if(t.amount < 0)
+                sum -= t.amount
+        }
+        return sum
     }
 }

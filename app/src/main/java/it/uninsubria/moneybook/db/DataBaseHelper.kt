@@ -145,5 +145,19 @@ class DataBaseHelper(var context : Context) : SQLiteOpenHelper(context, DATABASE
         return list
     }
 
-    //TODO(""queries per tutti i vari filtri)"
+    fun read(startDate : String, endDate : String, categories: ArrayList<Int>) : MutableList<Transaction> {
+        val list :MutableList<Transaction> = ArrayList()
+        val db = this.readableDatabase
+
+
+        TODO("not yet implemented")
+
+
+        return list
+    }
+
+    fun read(startDate : String, endDate: String) : MutableList<Transaction> {
+        return ArrayList()
+    }
+
 }

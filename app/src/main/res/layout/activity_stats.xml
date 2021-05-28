@@ -14,7 +14,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_margin="@dimen/std_margin">
+        android:layout_margin="@dimen/std_margin"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,7 +29,6 @@
                 android:layout_weight="1"
                 android:hint="From"
                 android:onClick="onClickDate"
-                android:textAlignment="center"
                 android:textSize="18sp"
                 app:drawableEndCompat="@drawable/ic_calendar_24px" />
 
@@ -39,7 +39,6 @@
                 android:layout_weight="1"
                 android:hint="To"
                 android:onClick="onClickDate"
-                android:textAlignment="center"
                 android:textSize="18sp"
                 app:drawableEndCompat="@drawable/ic_calendar_24px" />
 
@@ -59,7 +58,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="APPLY"
-            android:layout_gravity="end"/>
+            android:layout_gravity="end"
+            android:layout_marginBottom="8dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -79,6 +79,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Income"
+                android:textColor="@color/green"
+                android:textSize="24sp"
                 android:textAlignment="center"/>
         </LinearLayout>
 
@@ -100,13 +102,16 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Expenses"
+                android:textSize="24sp"
+                android:textColor="@color/red"
                 android:textAlignment="center"/>
         </LinearLayout>
 
     </LinearLayout>
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/lineChart"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/graphFragment"
+        android:name="it.uninsubria.moneybook.ui.GraphFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="@dimen/std_margin"
