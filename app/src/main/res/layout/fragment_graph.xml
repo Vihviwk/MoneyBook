@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.GraphFragment"
-    android:background="@color/ltGray">
+    android:background="@color/ltGray"
+    >
 
     <Spinner
         android:id="@+id/spinnyBoy"

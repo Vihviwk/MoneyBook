@@ -6,118 +6,127 @@
     android:layout_height="match_parent"
     tools:context=".ui.StatsActivity">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:fadingEdgeLength="4dp"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="16dp"
+        app:cardMaxElevation="24dp"
+        app:contentPadding="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_margin="@dimen/std_margin"
-        >
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_margin="@dimen/std_margin"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/fromTextView"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="From"
-                android:onClick="onClickDate"
-                android:textSize="18sp"
-                app:drawableEndCompat="@drawable/ic_calendar_24px" />
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/toTextView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="To"
-                android:onClick="onClickDate"
-                android:textSize="18sp"
-                app:drawableEndCompat="@drawable/ic_calendar_24px" />
+                <TextView
+                    android:id="@+id/fromTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/start_date"
+                    android:onClick="onClickDate"
+                    android:textSize="18sp"
+                    app:drawableEndCompat="@drawable/ic_calendar_24px" />
 
-            <ImageButton
-                android:id="@+id/filtersButton"
-                android:layout_width="0dp"
+                <TextView
+                    android:id="@+id/toTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/end_date"
+                    android:onClick="onClickDate"
+                    android:textSize="18sp"
+                    app:drawableEndCompat="@drawable/ic_calendar_24px" />
+
+                <ImageButton
+                    android:id="@+id/filtersButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:contentDescription="@string/filters_title"
+                    android:onClick="onClickFilters"
+                    app:srcCompat="@drawable/ic_baseline_filter_list_24" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/applyButton"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:onClick="onClickFilters"
-                app:srcCompat="@drawable/ic_baseline_filter_list_24"
-                android:contentDescription="@string/filters_title"/>
+                android:layout_gravity="end"
+                android:layout_marginBottom="8dp"
+                android:text="@string/apply" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/totalInTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/total_income" />
+
+                <TextView
+                    android:id="@+id/incomeTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Income"
+                    android:textAlignment="center"
+                    android:textColor="@color/green"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/totalOutTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/total_expenses" />
+
+                <TextView
+                    android:id="@+id/expensesTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Expenses"
+                    android:textAlignment="center"
+                    android:textColor="@color/red"
+                    android:textSize="24sp" />
+            </LinearLayout>
 
         </LinearLayout>
-
-        <Button
-            android:id="@+id/applyButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="APPLY"
-            android:layout_gravity="end"
-            android:layout_marginBottom="8dp"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/totalInTV"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Total income:" />
-
-            <TextView
-                android:id="@+id/incomeTextView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Income"
-                android:textColor="@color/green"
-                android:textSize="24sp"
-                android:textAlignment="center"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/totalOutTV"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Total expenses:" />
-
-            <TextView
-                android:id="@+id/expensesTextView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Expenses"
-                android:textSize="24sp"
-                android:textColor="@color/red"
-                android:textAlignment="center"/>
-        </LinearLayout>
-
-    </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/graphFragment"
         android:name="it.uninsubria.moneybook.ui.GraphFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_margin="@dimen/std_margin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

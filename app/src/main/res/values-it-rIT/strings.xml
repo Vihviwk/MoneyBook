@@ -30,4 +30,9 @@
     <string name="new_t_button">Nuova transazione</string>
     <string name="settings_button">Impostazioni</string>
     <string name="stats_button">Statisitiche/Grafici</string>
+    <string name="total_expenses">Spese totali:</string>
+    <string name="total_income">Guadagno totale:</string>
+    <string name="apply">APPLICA</string>
+    <string name="start_date">Da:</string>
+    <string name="end_date">A:</string>
 </resources>

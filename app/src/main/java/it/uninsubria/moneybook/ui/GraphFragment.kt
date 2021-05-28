@@ -1,5 +1,6 @@
 package it.uninsubria.moneybook.ui
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.AxisBase
+import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
@@ -60,24 +62,8 @@ class GraphFragment : Fragment(), AdapterView.OnItemSelectedListener {
         list.addAll(db.readAllData())
         list.reverse()
 
-        //=========================GRAPH=========================================
 
         lineChart = view.findViewById<LineChart>(R.id.graph)
-
-        //temp
-        //val list = arrayOf(Pair(0,0), Pair(1,1), Pair(2,2), Pair(3,-5))
-
-        handleData()
-
-        dataSet = LineDataSet(entries, "Label")
-        dataSet.color = ContextCompat.getColor(requireContext(), R.color.red)
-
-        lineChart.data = LineData(dataSet)
-
-        lineChart.xAxis.granularity= 1f      // minimum axis-step (interval) is 1
-        lineChart.xAxis.setDrawLabels(false)
-
-        lineChart.invalidate()
 
         // Inflate the layout for this fragment
         return view
@@ -85,7 +71,7 @@ class GraphFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        //TODO("Not yet implemented")
+
         //make toast
         val item : String = parent!!.getItemAtPosition(position).toString()
         //showing selected spinner item
@@ -95,13 +81,25 @@ class GraphFragment : Fragment(), AdapterView.OnItemSelectedListener {
         //TODO("other cases, queries")
         when(position) {
             0 -> {
+                list.clear()
+                list.addAll(db.readWeek())
+                list.reverse()
 
+                handleData()
             }
             1 -> {
+                list.clear()
+                list.addAll(db.readMonth())
+                list.reverse()
 
+                handleData()
             }
             2 -> {
+                list.clear()
+                list.addAll(db.readYear())
+                list.reverse()
 
+                handleData()
             }
             3 -> {
                 list.clear()
@@ -125,13 +123,27 @@ class GraphFragment : Fragment(), AdapterView.OnItemSelectedListener {
             amount += list[i].amount
             entries.add(Entry(i+1f, amount))
         }
-        if(lineChart.data != null && dataSet != null) {
-            dataSet = LineDataSet(entries, "Label")
-            //dataSet.notifyDataSetChanged()
-            lineChart.data.notifyDataChanged()
-            lineChart.notifyDataSetChanged()
-            lineChart.invalidate()
-        }
+
+        dataSet = LineDataSet(entries, null)
+        dataSet.color = ContextCompat.getColor(requireContext(), R.color.red)
+        dataSet.lineWidth = 2f
+        dataSet.setCircleColor(ContextCompat.getColor(requireContext(), R.color.red))
+        dataSet.setDrawValues(false)
+//        dataSet.valueTextSize = 12f
+//        dataSet.valueTextColor = Color.BLACK
+
+        lineChart.data = LineData(dataSet)
+
+        lineChart.setBackgroundColor(Color.WHITE)
+        lineChart.xAxis.granularity= 1f      // minimum axis-step (interval) is 1
+        lineChart.xAxis.setDrawLabels(false)
+        lineChart.legend.isEnabled = false
+        lineChart.axisLeft.textSize = 12f
+        lineChart.axisRight.textSize = 12f
+
+        lineChart.data.notifyDataChanged()
+        lineChart.notifyDataSetChanged()
+        lineChart.invalidate()
     }
 
 }

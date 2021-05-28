@@ -5,7 +5,6 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.widget.Toast
-import it.uninsubria.moneybook.R
 
 //database values
 private const val DATABASE_NAME = "MoneyBookDB"
@@ -192,6 +191,75 @@ class DataBaseHelper(var context : Context) : SQLiteOpenHelper(context, DATABASE
         val db = this.readableDatabase
 
         val query = "Select * from $TABLE_NAME where $COL_DATE between '$startDate' and '$endDate'"
+
+        val result = db.rawQuery(query, null)
+        if (result.moveToFirst()) {
+            do {
+                val transaction = Transaction()
+                transaction.id = result.getInt(result.getColumnIndex(COL_ID))
+                transaction.amount = result.getFloat(result.getColumnIndex(COL_AMOUNT))
+                transaction.category = result.getString(result.getColumnIndex(COL_TYPE))
+                transaction.date = result.getString(result.getColumnIndex(COL_DATE))
+                transaction.description = result.getString(result.getColumnIndex(COL_MSG))
+                list.add(transaction)
+            } while (result.moveToNext())
+        }
+        result.close()
+
+        return list
+    }
+
+    fun readYear() : MutableList<Transaction> {
+        val list :MutableList<Transaction> = ArrayList()
+        val db = this.readableDatabase
+
+        val query = "Select * from $TABLE_NAME where $COL_DATE >= date('now', 'start of year');"
+
+        val result = db.rawQuery(query, null)
+        if (result.moveToFirst()) {
+            do {
+                val transaction = Transaction()
+                transaction.id = result.getInt(result.getColumnIndex(COL_ID))
+                transaction.amount = result.getFloat(result.getColumnIndex(COL_AMOUNT))
+                transaction.category = result.getString(result.getColumnIndex(COL_TYPE))
+                transaction.date = result.getString(result.getColumnIndex(COL_DATE))
+                transaction.description = result.getString(result.getColumnIndex(COL_MSG))
+                list.add(transaction)
+            } while (result.moveToNext())
+        }
+        result.close()
+
+        return list
+    }
+
+    fun readMonth() : MutableList<Transaction> {
+        val list :MutableList<Transaction> = ArrayList()
+        val db = this.readableDatabase
+
+        val query = "Select * from $TABLE_NAME where $COL_DATE >= date('now', 'start of month');"
+
+        val result = db.rawQuery(query, null)
+        if (result.moveToFirst()) {
+            do {
+                val transaction = Transaction()
+                transaction.id = result.getInt(result.getColumnIndex(COL_ID))
+                transaction.amount = result.getFloat(result.getColumnIndex(COL_AMOUNT))
+                transaction.category = result.getString(result.getColumnIndex(COL_TYPE))
+                transaction.date = result.getString(result.getColumnIndex(COL_DATE))
+                transaction.description = result.getString(result.getColumnIndex(COL_MSG))
+                list.add(transaction)
+            } while (result.moveToNext())
+        }
+        result.close()
+
+        return list
+    }
+
+    fun readWeek() : MutableList<Transaction> {
+        val list :MutableList<Transaction> = ArrayList()
+        val db = this.readableDatabase
+
+        val query = "Select * from $TABLE_NAME where $COL_DATE >= date('now', '-7 days');"
 
         val result = db.rawQuery(query, null)
         if (result.moveToFirst()) {
