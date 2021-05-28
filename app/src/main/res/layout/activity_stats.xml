@@ -10,34 +10,99 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/std_margin"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="@dimen/std_margin">
 
-        <TextView
-            android:id="@+id/fromTextView"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/fromTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="From"
+                android:onClick="onClickDate"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                app:drawableEndCompat="@drawable/ic_calendar_24px" />
+
+            <TextView
+                android:id="@+id/toTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="To"
+                android:onClick="onClickDate"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                app:drawableEndCompat="@drawable/ic_calendar_24px" />
+
+            <ImageButton
+                android:id="@+id/filtersButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:onClick="onClickFilters"
+                app:srcCompat="@drawable/ic_baseline_filter_list_24"
+                android:contentDescription="@string/filters_title"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/applyButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="From"
-            app:drawableEndCompat="@drawable/ic_calendar_24px" />
+            android:text="APPLY"
+            android:layout_gravity="end"/>
 
-        <TextView
-            android:id="@+id/toTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="To"
-            app:drawableEndCompat="@drawable/ic_calendar_24px" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/filtersButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            app:srcCompat="@drawable/ic_baseline_filter_list_24" />
+            <TextView
+                android:id="@+id/totalInTV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Total income:" />
+
+            <TextView
+                android:id="@+id/incomeTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Income"
+                android:textAlignment="center"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/totalOutTV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Total expenses:" />
+
+            <TextView
+                android:id="@+id/expensesTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Expenses"
+                android:textAlignment="center"/>
+        </LinearLayout>
+
     </LinearLayout>
 
     <com.github.mikephil.charting.charts.LineChart

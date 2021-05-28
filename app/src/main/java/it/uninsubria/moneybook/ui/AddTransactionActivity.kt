@@ -1,22 +1,15 @@
 package it.uninsubria.moneybook.ui
 
-import android.app.Activity
-import android.app.DatePickerDialog
-import android.app.Dialog
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.DialogFragment
 import it.uninsubria.moneybook.R
 import it.uninsubria.moneybook.db.Transaction
 import it.uninsubria.moneybook.db.DataBaseHelper
 import kotlinx.android.synthetic.main.add_transaction_activity.*
-import kotlinx.android.synthetic.main.row.*
 import java.lang.Float.parseFloat
-import java.util.*
 
 
 private const val TAG = "Add Transaction"
@@ -104,7 +97,7 @@ class AddTransactionActivity: AppCompatActivity(),
     }
 
 
-    override fun onDateSet(year: Int, month: Int, dayOfMonth: Int) {
+    override fun onDateSet(year: Int, month: Int, dayOfMonth: Int, flag : Int) {
         val sMonth = handleDate(month +1)
         val day = handleDate(dayOfMonth)
         val sDate = "$year-$sMonth-$day"

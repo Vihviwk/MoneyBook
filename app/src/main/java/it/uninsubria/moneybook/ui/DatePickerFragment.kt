@@ -9,12 +9,12 @@ import androidx.fragment.app.DialogFragment
 import java.util.*
 
 
-
 class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener {
 
+    var flag : Int = 0
 
     interface NoticeDialogListener {
-        fun onDateSet(year: Int, month: Int, dayOfMonth: Int)
+        fun onDateSet(year: Int, month: Int, dayOfMonth: Int, flag : Int)
     }
 
     internal lateinit var listener : NoticeDialogListener
@@ -46,9 +46,10 @@ class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener 
         }
     }
 
+
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
 
-        listener.onDateSet(year, month, dayOfMonth)
+        listener.onDateSet(year, month, dayOfMonth, flag)
     }
 
 
