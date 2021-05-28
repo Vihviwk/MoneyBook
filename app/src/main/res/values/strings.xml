@@ -11,6 +11,10 @@
     <string name="ok" translatable="false">OK</string>
     <string name="cancel">Cancel</string>
     <string name="resetFilters" translatable="false">Reset</string>
+    <string name="all_t_button">All Transactions</string>
+    <string name="new_t_button">New Transaction</string>
+    <string name="settings_button">Settings</string>
+    <string name="stats_button">Stats/Graphs</string>
     <string name="week">Week</string>
     <string name="month">Month</string>
     <string name="year">Year</string>

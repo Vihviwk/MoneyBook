@@ -26,4 +26,8 @@
     <string name="delete_all">Cancella tutti i dati</string>
     <string name="confirm_delete">Vuoi cancellare tutti i dati?</string>
     <string name="data_deleted">Dati cancellati</string>
+    <string name="all_t_button">Tutte le transazioni</string>
+    <string name="new_t_button">Nuova transazione</string>
+    <string name="settings_button">Impostazioni</string>
+    <string name="stats_button">Statisitiche/Grafici</string>
 </resources>

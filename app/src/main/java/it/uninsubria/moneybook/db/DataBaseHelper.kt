@@ -108,8 +108,6 @@ class DataBaseHelper(var context : Context) : SQLiteOpenHelper(context, DATABASE
         onCreate(db)
     }
 
-    //TODO(""queries per tutti i vari filtri)"
-
     //query per leggere solo le transazioni di certe categorie
     fun readCategories(categories : ArrayList<Int>): MutableList<Transaction> {
         val list : MutableList<Transaction> = ArrayList()
@@ -147,4 +145,5 @@ class DataBaseHelper(var context : Context) : SQLiteOpenHelper(context, DATABASE
         return list
     }
 
+    //TODO(""queries per tutti i vari filtri)"
 }
