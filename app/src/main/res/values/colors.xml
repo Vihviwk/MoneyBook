@@ -10,4 +10,10 @@
     <color name="red">#FF0000</color>
     <color name="green">#00FF00</color>
     <color name="ltGray">#D3D3D3</color>
+
+    <color name="brunswick_green">#0B4736</color>
+    <color name="dark_jungle_green">#09211A</color>
+    <color name="orange">#FFA500</color>
+    <color name="saddle_brown">#8C3E0D</color>
+    <color name="dark_purple">#23022E</color>
 </resources>

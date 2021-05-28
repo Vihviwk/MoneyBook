@@ -17,16 +17,14 @@
             android:id="@+id/categoryRow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Category"
             android:textSize="18sp"
-            android:textColor="@color/purple_200"
+            android:textColor="@color/dark_purple"
             android:layout_margin="@dimen/small_margin" />
 
         <TextView
             android:id="@+id/descriptionRow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Description"
             android:textSize="16sp"
             android:minLines="2"
             android:layout_margin="@dimen/small_margin"/>
@@ -38,7 +36,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_weight="0.6"
-        android:text="yyyy-MM-dd"
         android:layout_margin="@dimen/small_margin"
         />
 

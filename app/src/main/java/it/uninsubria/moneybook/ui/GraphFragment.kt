@@ -125,9 +125,9 @@ class GraphFragment : Fragment(), AdapterView.OnItemSelectedListener {
         }
 
         dataSet = LineDataSet(entries, null)
-        dataSet.color = ContextCompat.getColor(requireContext(), R.color.red)
+        dataSet.color = ContextCompat.getColor(requireContext(), R.color.teal_700)
         dataSet.lineWidth = 2f
-        dataSet.setCircleColor(ContextCompat.getColor(requireContext(), R.color.red))
+        dataSet.setCircleColor(ContextCompat.getColor(requireContext(), R.color.teal_700))
         dataSet.setDrawValues(false)
 //        dataSet.valueTextSize = 12f
 //        dataSet.valueTextColor = Color.BLACK
