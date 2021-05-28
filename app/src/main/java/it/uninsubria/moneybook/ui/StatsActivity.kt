@@ -80,14 +80,24 @@ class StatsActivity : AppCompatActivity(), View.OnClickListener,
     }
 
     override fun onResetFilters() {
-        TODO("Not yet implemented")
+        filtersSelected.clear()
+
+        //get data from db
+        transactions.clear()
+        transactions.addAll(db.read(startDate, endDate))
+
+        //set textview value
+        incomeTextView.text = computeIncome(transactions).toString()
+        expensesTextView.text = computeExpenses(transactions).toString()
     }
 
     //apply button
     override fun onClick(v: View?) {
+        //get data from db
         transactions.clear()
         transactions.addAll(db.read(startDate, endDate, filtersSelected))
-        //TODO("update graph and data")
+
+        //set textview value
         incomeTextView.text = computeIncome(transactions).toString()
         expensesTextView.text = computeExpenses(transactions).toString()
     }

@@ -149,15 +149,65 @@ class DataBaseHelper(var context : Context) : SQLiteOpenHelper(context, DATABASE
         val list :MutableList<Transaction> = ArrayList()
         val db = this.readableDatabase
 
+        if(categories.isEmpty())
+            return read(startDate, endDate)
+        else {
 
-        TODO("not yet implemented")
+            var s = ""
+            for (item in categories) {
+                if(s != "")
+                    s += ", "
+                when (item) {
+                    0 -> s += "'Taxes'"
+                    1 -> s += "'Salary'"
+                    2 -> s += "'Restaurant'"
+                    3 -> s += "'Groceries'"
+                    4 -> s += "'Leisure'"
+                    5 -> s += "'Other'"
+                }
+            }
 
+            val query = "Select * from $TABLE_NAME where ($COL_TYPE in($s) and ($COL_DATE between '$startDate' and '$endDate'))"
 
-        return list
+            val result = db.rawQuery(query, null)
+            if (result.moveToFirst()) {
+                do {
+                    val transaction = Transaction()
+                    transaction.id = result.getInt(result.getColumnIndex(COL_ID))
+                    transaction.amount = result.getFloat(result.getColumnIndex(COL_AMOUNT))
+                    transaction.category = result.getString(result.getColumnIndex(COL_TYPE))
+                    transaction.date = result.getString(result.getColumnIndex(COL_DATE))
+                    transaction.description = result.getString(result.getColumnIndex(COL_MSG))
+                    list.add(transaction)
+                } while (result.moveToNext())
+            }
+            result.close()
+
+            return list
+        }
     }
 
     fun read(startDate : String, endDate: String) : MutableList<Transaction> {
-        return ArrayList()
+        val list :MutableList<Transaction> = ArrayList()
+        val db = this.readableDatabase
+
+        val query = "Select * from $TABLE_NAME where $COL_DATE between '$startDate' and '$endDate'"
+
+        val result = db.rawQuery(query, null)
+        if (result.moveToFirst()) {
+            do {
+                val transaction = Transaction()
+                transaction.id = result.getInt(result.getColumnIndex(COL_ID))
+                transaction.amount = result.getFloat(result.getColumnIndex(COL_AMOUNT))
+                transaction.category = result.getString(result.getColumnIndex(COL_TYPE))
+                transaction.date = result.getString(result.getColumnIndex(COL_DATE))
+                transaction.description = result.getString(result.getColumnIndex(COL_MSG))
+                list.add(transaction)
+            } while (result.moveToNext())
+        }
+        result.close()
+
+        return list
     }
 
 }
