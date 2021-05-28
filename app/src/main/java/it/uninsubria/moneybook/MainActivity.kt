@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import it.uninsubria.moneybook.db.DataBaseHelper
 import it.uninsubria.moneybook.ui.AddTransactionActivity
 import it.uninsubria.moneybook.ui.SettingsActivity
+import it.uninsubria.moneybook.ui.StatsActivity
 import it.uninsubria.moneybook.ui.TransactionListActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -40,7 +41,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(intent)
 
             }
-            R.id.buttonStats -> Log.i(TAG, "buttonStats")
+            R.id.buttonStats -> {
+                Log.i(TAG, "buttonStats")
+                val intent = Intent(this@MainActivity, StatsActivity::class.java)
+                startActivity(intent)
+            }
             R.id.buttonSettings -> {
                 Log.i(TAG, "buttonSettings")
                 val intent = Intent(this@MainActivity, SettingsActivity::class.java)
