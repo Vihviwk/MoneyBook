@@ -3,6 +3,8 @@ package it.uninsubria.moneybook.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.commit
+import androidx.fragment.app.replace
 import com.github.mikephil.charting.charts.LineChart
 import it.uninsubria.moneybook.R
 import it.uninsubria.moneybook.db.DataBaseHelper
@@ -100,6 +102,20 @@ class StatsActivity : AppCompatActivity(), View.OnClickListener,
         //set textview value
         incomeTextView.text = computeIncome(transactions).toString()
         expensesTextView.text = computeExpenses(transactions).toString()
+    }
+
+    fun pieChartOnClick(v: View ) {
+        supportFragmentManager.commit {
+            setReorderingAllowed(true)
+            replace<PieChartFragment>(R.id.graphFragment)
+        }
+    }
+
+    fun lineChartOnClick(v: View) {
+        supportFragmentManager.commit {
+            setReorderingAllowed(true)
+            replace<GraphFragment>(R.id.graphFragment)
+        }
     }
 
     private fun computeIncome(transactions : MutableList<Transaction>) : Float {

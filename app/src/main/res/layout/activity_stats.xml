@@ -116,6 +116,19 @@
                     android:textSize="24sp" />
             </LinearLayout>
 
+            <Button
+                android:id="@+id/pieChartButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="View expenses by category"
+                android:onClick="pieChartOnClick"/>
+
+            <Button
+                android:id="@+id/lineChartButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="View Line Chart"
+                android:onClick="lineChartOnClick"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
