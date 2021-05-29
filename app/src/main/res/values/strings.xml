@@ -45,6 +45,8 @@
     <string name="apply">APPLY</string>
     <string name="start_date">From:</string>
     <string name="end_date">To:</string>
+    <string name="show_pie">Show expenses by category</string>
+    <string name="show_line">Show Line Graph</string>
     <string-array name="categories">
         <item>@string/taxes</item>
         <item>@string/salary</item>

@@ -1,11 +1,10 @@
 package it.uninsubria.moneybook.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
-import com.github.mikephil.charting.charts.LineChart
 import it.uninsubria.moneybook.R
 import it.uninsubria.moneybook.db.DataBaseHelper
 import it.uninsubria.moneybook.db.Transaction
@@ -16,6 +15,8 @@ class StatsActivity : AppCompatActivity(), View.OnClickListener,
 
     private var startDate = "1970-01-01"
     private var endDate = "2100-01-01"
+
+    private var pieChartVisible = false
 
     private var filtersSelected : ArrayList<Int> = ArrayList()
 
@@ -104,17 +105,23 @@ class StatsActivity : AppCompatActivity(), View.OnClickListener,
         expensesTextView.text = computeExpenses(transactions).toString()
     }
 
-    fun pieChartOnClick(v: View ) {
-        supportFragmentManager.commit {
-            setReorderingAllowed(true)
-            replace<PieChartFragment>(R.id.graphFragment)
-        }
-    }
-
-    fun lineChartOnClick(v: View) {
-        supportFragmentManager.commit {
-            setReorderingAllowed(true)
-            replace<GraphFragment>(R.id.graphFragment)
+    fun chartOnClick(v: View) {
+        if(pieChartVisible) {
+            supportFragmentManager.commit {
+                setReorderingAllowed(true)
+                replace<GraphFragment>(R.id.graphFragment)
+            }
+            pieChartVisible = false
+            //button text
+            pieChartButton.text = getString(R.string.show_pie)
+        } else {
+            supportFragmentManager.commit {
+                setReorderingAllowed(true)
+                replace<PieChartFragment>(R.id.graphFragment)
+            }
+            pieChartVisible = true
+            //button text
+            pieChartButton.text = getString(R.string.show_line)
         }
     }
 

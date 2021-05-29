@@ -35,4 +35,6 @@
     <string name="apply">APPLICA</string>
     <string name="start_date">Da:</string>
     <string name="end_date">A:</string>
+    <string name="show_pie">Mostra spese per categoria</string>
+    <string name="show_line">Mostra grafico</string>
 </resources>
