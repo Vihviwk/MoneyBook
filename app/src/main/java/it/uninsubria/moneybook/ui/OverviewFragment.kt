@@ -54,6 +54,10 @@ class OverviewFragment : Fragment(), AdapterView.OnItemSelectedListener {
         //showing selected spinner item
         Toast.makeText(parent.context, resources.getString(R.string.selected, item), Toast.LENGTH_SHORT).show()
 
+        processAmount(position)
+    }
+
+    fun processAmount(position : Int) {
         //get amount from db
         val amount = db.totalAmount(position)
 
@@ -71,5 +75,9 @@ class OverviewFragment : Fragment(), AdapterView.OnItemSelectedListener {
         Toast.makeText(parent!!.context, "Nothing selected", Toast.LENGTH_SHORT).show()
     }
 
+    override fun onResume() {
+        super.onResume()
+        processAmount(0)
+    }
 
 }

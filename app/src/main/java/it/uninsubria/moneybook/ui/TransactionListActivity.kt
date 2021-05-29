@@ -43,7 +43,7 @@ class TransactionListActivity : AppCompatActivity(), FiltersFragment.FiltersList
 
     }
 
-    fun showFiltersFragment() {
+    fun showFiltersFragment(v: View) {
         val newFragment = FiltersFragment()
         newFragment.show(supportFragmentManager, "filters")
     }

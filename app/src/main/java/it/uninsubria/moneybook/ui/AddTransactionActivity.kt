@@ -83,7 +83,7 @@ class AddTransactionActivity: AppCompatActivity(),
 
     }
 
-    fun showDatePickerDialog() {
+    fun showDatePickerDialog(v: View) {
         val newFragment = DatePickerFragment()
         newFragment.show(supportFragmentManager, "datePicker")
     }
