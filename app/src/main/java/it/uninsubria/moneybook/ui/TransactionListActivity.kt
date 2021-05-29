@@ -43,7 +43,7 @@ class TransactionListActivity : AppCompatActivity(), FiltersFragment.FiltersList
 
     }
 
-    fun showFiltersFragment(v: View) {
+    fun showFiltersFragment() {
         val newFragment = FiltersFragment()
         newFragment.show(supportFragmentManager, "filters")
     }
@@ -96,7 +96,6 @@ class TransactionListActivity : AppCompatActivity(), FiltersFragment.FiltersList
                 description.text = data[position].description
                 date.text = data[position].date
                 amount.text = context.resources.getString(R.string.amount, data[position].amount)
-                //amount.text = data[position].amount.toString()
 
                 if (data[position].amount >= 0f) {
                     amount.setTextColor(ContextCompat.getColor(context, R.color.green))

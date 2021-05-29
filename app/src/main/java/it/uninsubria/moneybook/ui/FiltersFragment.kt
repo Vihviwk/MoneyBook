@@ -17,7 +17,7 @@ class FiltersFragment : DialogFragment() {
     }
 
     private val selectedItems = ArrayList<Int>()
-    internal lateinit var listener : FiltersListener
+    private lateinit var listener : FiltersListener
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {

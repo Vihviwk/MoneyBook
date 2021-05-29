@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import it.uninsubria.moneybook.db.DataBaseHelper
 import it.uninsubria.moneybook.ui.AddTransactionActivity
 import it.uninsubria.moneybook.ui.SettingsActivity
 import it.uninsubria.moneybook.ui.StatsActivity

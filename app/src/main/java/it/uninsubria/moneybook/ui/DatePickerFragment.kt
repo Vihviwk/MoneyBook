@@ -17,7 +17,7 @@ class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener 
         fun onDateSet(year: Int, month: Int, dayOfMonth: Int, flag : Int)
     }
 
-    internal lateinit var listener : NoticeDialogListener
+    private lateinit var listener : NoticeDialogListener
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         // Use the current date as the default date in the picker

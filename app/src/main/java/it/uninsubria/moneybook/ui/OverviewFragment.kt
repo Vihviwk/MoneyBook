@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_overview.*
 
 class OverviewFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
-    lateinit var  db : DataBaseHelper
+    private lateinit var  db : DataBaseHelper
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -67,7 +67,8 @@ class OverviewFragment : Fragment(), AdapterView.OnItemSelectedListener {
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
-        TODO("Not yet implemented")
+        //make toast
+        Toast.makeText(parent!!.context, "Nothing selected", Toast.LENGTH_SHORT).show()
     }
 
 

@@ -21,7 +21,7 @@ import kotlin.math.abs
 
 class PieChartFragment : Fragment() {
 
-    lateinit var pieChart : PieChart
+    private lateinit var pieChart : PieChart
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,7 +31,7 @@ class PieChartFragment : Fragment() {
 
         val db = DataBaseHelper(requireContext())
 
-        pieChart = view.findViewById<PieChart>(R.id.pieChart)
+        pieChart = view.findViewById(R.id.pieChart)
 
         setup(db)
 
@@ -39,7 +39,7 @@ class PieChartFragment : Fragment() {
     }
 
     private fun setup(db : DataBaseHelper) {
-        //TODO("Not yet implemented")
+
         val taxes = db.readCategories(arrayListOf(0))
         val salary = db.readCategories(arrayListOf(1))
         val rest = db.readCategories(arrayListOf(2))

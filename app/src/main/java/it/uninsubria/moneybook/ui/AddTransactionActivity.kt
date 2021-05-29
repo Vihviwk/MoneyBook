@@ -19,9 +19,9 @@ class AddTransactionActivity: AppCompatActivity(),
     DatePickerFragment.NoticeDialogListener, AdapterView.OnItemSelectedListener {
 
 
-    lateinit var category : String
-    lateinit var description : String
-    lateinit var date : String
+    private lateinit var category : String
+    private lateinit var description : String
+    private lateinit var date : String
     var amount : Float = 0.0f
 
 
@@ -77,25 +77,16 @@ class AddTransactionActivity: AppCompatActivity(),
 
             db.insertData(transaction)
 
-            closeActivity()
+            finish()
         }
 
 
     }
 
-    fun showDatePickerDialog(v: View) {
+    fun showDatePickerDialog() {
         val newFragment = DatePickerFragment()
         newFragment.show(supportFragmentManager, "datePicker")
     }
-
-    private fun closeActivity() {
-        //TODO("not yet implemented")
-        //handle invalid input
-//        val resultIntent = Intent()
-//        setResult(Activity.RESULT_OK, resultIntent)
-        finish()
-    }
-
 
     override fun onDateSet(year: Int, month: Int, dayOfMonth: Int, flag : Int) {
         val sMonth = handleDate(month +1)
@@ -131,7 +122,8 @@ class AddTransactionActivity: AppCompatActivity(),
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
-        TODO("Not yet implemented")
+        //make Toast
+        Toast.makeText(parent!!.context, "Nothing selected", Toast.LENGTH_SHORT).show()
     }
 
 }

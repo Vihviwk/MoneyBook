@@ -12,13 +12,9 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.github.mikephil.charting.charts.LineChart
-import com.github.mikephil.charting.components.AxisBase
-import com.github.mikephil.charting.components.Description
-import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
-import com.github.mikephil.charting.formatter.ValueFormatter
 import it.uninsubria.moneybook.R
 import it.uninsubria.moneybook.db.DataBaseHelper
 import it.uninsubria.moneybook.db.Transaction
@@ -29,11 +25,11 @@ class GraphFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
     private lateinit var db : DataBaseHelper
 
-    lateinit var lineChart : LineChart
-    lateinit var dataSet : LineDataSet
+    private lateinit var lineChart : LineChart
+    private lateinit var dataSet : LineDataSet
 
-    var list : MutableList<Transaction> = ArrayList()
-    var entries = ArrayList<Entry>()
+    private var list : MutableList<Transaction> = ArrayList()
+    private var entries = ArrayList<Entry>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -63,7 +59,7 @@ class GraphFragment : Fragment(), AdapterView.OnItemSelectedListener {
         list.reverse()
 
 
-        lineChart = view.findViewById<LineChart>(R.id.graph)
+        lineChart = view.findViewById(R.id.graph)
 
         // Inflate the layout for this fragment
         return view
@@ -78,7 +74,6 @@ class GraphFragment : Fragment(), AdapterView.OnItemSelectedListener {
         Toast.makeText(parent.context, resources.getString(R.string.selected, item),
                                                             Toast.LENGTH_SHORT).show()
 
-        //TODO("other cases, queries")
         when(position) {
             0 -> {
                 list.clear()
@@ -112,7 +107,8 @@ class GraphFragment : Fragment(), AdapterView.OnItemSelectedListener {
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
-        TODO("Not yet implemented")
+        //make toast
+        Toast.makeText(parent!!.context, "Nothing selected", Toast.LENGTH_SHORT).show()
     }
 
     private fun handleData() {

@@ -73,7 +73,7 @@ class StatsActivity : AppCompatActivity(), View.OnClickListener,
         return s
     }
 
-    fun onClickFilters(v: View) {
+    fun onClickFilters() {
         val newFragment = FiltersFragment()
         newFragment.show(supportFragmentManager, "statsFilters")
     }
@@ -105,7 +105,7 @@ class StatsActivity : AppCompatActivity(), View.OnClickListener,
         expensesTextView.text = computeExpenses(transactions).toString()
     }
 
-    fun chartOnClick(v: View) {
+    fun chartOnClick() {
         if(pieChartVisible) {
             supportFragmentManager.commit {
                 setReorderingAllowed(true)
